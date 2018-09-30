@@ -1,11 +1,11 @@
-const Koa = require('koa');
-const cors = require('koa-cors');
-const logger = require('koa-logger');
+const Koa = require("koa");
+const cors = require("koa-cors");
+const logger = require("koa-logger");
 const app = new Koa();
-const weatherRoutes = require('./routes/weather');
-const router = require('koa-router')();
+const weatherRoutes = require("./routes/weather");
+const router = require("koa-router")();
 
-router.use('/weather', weatherRoutes.routes());
+router.use("/weather", weatherRoutes.routes());
 
 app
   .use(logger())

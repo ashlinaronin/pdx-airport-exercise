@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {getWeather} from "./services/weather";
-import {AVAILABLE_MONTHS, PDX_LATITUDE, PDX_LONGITUDE} from "./constants";
-import MonthSelector from './components/MonthSelector';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { getWeather } from "./services/weather";
+import { AVAILABLE_MONTHS, PDX_LATITUDE, PDX_LONGITUDE } from "./constants";
+import MonthSelector from "./components/MonthSelector";
 
 class App extends Component {
   constructor(props) {
@@ -33,13 +33,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <MonthSelector currentMonth={this.state.month} onMonthChange={this.handleMonthChange} />
-        <p>
-          {JSON.stringify(this.state.weather)}
-        </p>
-        <p className="App-intro">
-          Powered by Dark Sky
-        </p>
+        <MonthSelector
+          currentMonth={this.state.month}
+          onMonthChange={this.handleMonthChange}
+        />
+        <p>{JSON.stringify(this.state.weather)}</p>
+        <p className="App-intro">Powered by Dark Sky</p>
       </div>
     );
   }
