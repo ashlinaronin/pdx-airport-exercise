@@ -11,10 +11,11 @@ router.get("/today/:latitude/:longitude", async ctx => {
   }
 });
 
-router.get("/month/:month/:latitude/:longitude", async ctx => {
+router.get("/month/:month/:year/:latitude/:longitude", async ctx => {
   try {
     ctx.body = await getWeatherForMonth(
       ctx.params.month,
+      ctx.params.year,
       ctx.params.latitude,
       ctx.params.longitude
     );

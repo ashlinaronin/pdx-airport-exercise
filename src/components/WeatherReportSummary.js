@@ -4,7 +4,7 @@ import { weatherType } from "../types";
 import { THRESHOLD_HEATING, THRESHOLD_AC } from "../constants";
 import "./WeatherReportList.css";
 
-const WeatherReportSummary = ({ weatherDataArray, month }) => {
+const WeatherReportSummary = ({ weatherDataArray, month, year }) => {
   let totalAc = 0;
   let totalHeat = 0;
 
@@ -21,16 +21,17 @@ const WeatherReportSummary = ({ weatherDataArray, month }) => {
 
   return (
     <div>
-      During the month of {month} 2018, the Portland International Airport's AC
-      system was turned on at least once a day for {totalAc} days. Its heating
-      system was turned on at least once a day for {totalHeat} days.
+      During the month of {month} {year}, the Portland International Airport's
+      AC system was turned on at least once a day for {totalAc} days. Its
+      heating system was turned on at least once a day for {totalHeat} days.
     </div>
   );
 };
 
 WeatherReportSummary.propTypes = {
   weatherDataArray: PropTypes.arrayOf(weatherType),
-  month: PropTypes.string.isRequired
+  month: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired
 };
 
 export default WeatherReportSummary;

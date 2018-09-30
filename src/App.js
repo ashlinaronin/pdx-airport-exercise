@@ -18,7 +18,8 @@ class App extends Component {
       weather: [],
       error: "",
       loading: true,
-      month: AVAILABLE_MONTHS[0]
+      month: AVAILABLE_MONTHS[0],
+      year: new Date().getFullYear()
     };
   }
 
@@ -41,6 +42,7 @@ class App extends Component {
     try {
       const weather = await getWeather(
         this.state.month,
+        this.state.year,
         PDX_LATITUDE,
         PDX_LONGITUDE
       );
@@ -70,6 +72,7 @@ class App extends Component {
           <WeatherReportSummary
             weatherDataArray={this.state.weather}
             month={this.state.month}
+            year={this.state.year}
           />
         )}
         <p className="App-intro">
