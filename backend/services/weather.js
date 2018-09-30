@@ -11,7 +11,20 @@ async function getWeather(latitude, longitude) {
 
 async function getWeatherForMonth(month, latitude, longitude) {
   // Convert given month into a Unix timestamp in PST
-  const date = new Date(`1 ${month} 2018 00:00:00 GMT-0800`);
+
+  const monthWeather = [];
+
+  // need to figure out how many days in month...
+  for (let i = 1; i <= 31; i++) {
+    const dayWeather = await getWeatherForDay(i, month, latitude, longitude);
+    monthWeather.push(dayWeather);
+  }
+
+  return monthWeather;
+}
+
+async function getWeatherForDay(day, month, latitude, longitude) {
+  const date = new Date(`${day} ${month} 2018 00:00:00 GMT-0800`);
   const timestamp = Math.round(date.getTime() / 1000);
 
   const url = `${API_BASE_URL}/${API_SECRET}/${latitude},${longitude},${timestamp}?exclude=currently,hourly,flags`;
