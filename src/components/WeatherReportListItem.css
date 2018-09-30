@@ -1,0 +1,16 @@
+.weather-report-list__item {
+  border: 1px solid red;
+  padding: 8px;
+}
+
+.weather-report-list__item.weather-report-list__item--heat {
+  background: red;
+}
+
+.weather-report-list__item.weather-report-list__item--ac {
+  background: blue;
+}
+
+.weather-report-list__item.weather-report-list__item--heat.weather-report-list__item--ac {
+  background: purple;
+}

@@ -1,13 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import WeatherReportListItem from './WeatherReportListItem';
-import {weatherType} from "../types";
+import WeatherReportListItem from "./WeatherReportListItem";
+import { weatherType } from "../types";
+import "./WeatherReportList.css";
 
 const WeatherReportList = ({ weatherDataArray }) => {
   return (
-    <ul>
+    <ul className="weather-report-list">
       {weatherDataArray.map((weatherData, index) => (
-        <WeatherReportListItem weatherData={weatherData} date={index+1} key={weatherData.daily.data[0].time} />
+        <WeatherReportListItem
+          weatherData={weatherData}
+          date={index + 1}
+          key={weatherData.daily.data[0].time}
+        />
       ))}
     </ul>
   );
