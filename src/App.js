@@ -16,12 +16,17 @@ class App extends Component {
     };
   }
 
-  handleMonthChange(event) {
+  async handleMonthChange(event) {
     this.setState({ month: event.target.value });
+    await this.fetchWeatherAndSetState();
   }
 
   async componentDidMount() {
-    const weather = await getWeather(PDX_LATITUDE, PDX_LONGITUDE);
+    await this.fetchWeatherAndSetState();
+  }
+
+  async fetchWeatherAndSetState() {
+    const weather = await getWeather(this.state.month, PDX_LATITUDE, PDX_LONGITUDE);
     this.setState({ weather });
   }
 
