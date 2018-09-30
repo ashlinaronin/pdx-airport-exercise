@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { weatherType } from "../types";
 import { THRESHOLD_HEATING, THRESHOLD_AC } from "../constants";
+import ReportKey from "./ReportKey";
 import "./WeatherReportSummary.css";
 
 const WeatherReportSummary = ({ weatherDataArray, month, year }) => {
@@ -21,28 +22,7 @@ const WeatherReportSummary = ({ weatherDataArray, month, year }) => {
 
   return (
     <div className="weather-report-summary">
-      <div className="report-key">
-        <div>Key:</div>
-        <div>
-          <div className="report-key__block report-key__block--heat">
-            <p>Heat</p>
-          </div>
-          <div>Heating on at least once</div>
-        </div>
-
-        <div>
-          <div className="report-key__block report-key__block--ac">
-            <p>AC</p>
-          </div>
-          <div>AC on at least once</div>
-        </div>
-        <div>
-          <div className="report-key__block report-key__block--both">
-            <p>Both</p>
-          </div>
-          <div>Both heating and AC on at least once</div>
-        </div>
-      </div>
+      <ReportKey />
       <p>
         During {month} {year}, the AC system at Portland International Airport
         was turned on at least once a day for {totalAc} days. The heating system
