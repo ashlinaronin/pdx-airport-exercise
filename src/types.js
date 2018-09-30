@@ -18,7 +18,7 @@ export const weatherType = PropTypes.shape({
       moonPhase: PropTypes.number.isRequired,
       precipIntensity: PropTypes.number.isRequired,
       precipIntensityMax: PropTypes.number.isRequired,
-      precipIntensityMaxTime: PropTypes.number.isRequired,
+      precipIntensityMaxTime: PropTypes.number,
       precipProbability: PropTypes.number.isRequired,
       pressure: PropTypes.number.isRequired,
       summary: PropTypes.string.isRequired,
