@@ -5,6 +5,8 @@ import { AVAILABLE_MONTHS, PDX_LATITUDE, PDX_LONGITUDE } from "./constants";
 import MonthSelector from "./components/MonthSelector";
 import WeatherReportList from "./components/WeatherReportList";
 import WeatherReportSummary from "./components/WeatherReportSummary";
+import ErrorMessage from "./components/ErrorMessage";
+import LoadingIndicator from "./components/LoadingIndicator";
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +16,8 @@ class App extends Component {
 
     this.state = {
       weather: [],
+      error: "",
+      loading: true,
       month: AVAILABLE_MONTHS[0]
     };
   }
@@ -33,12 +37,20 @@ class App extends Component {
   }
 
   async fetchWeatherAndSetState() {
-    const weather = await getWeather(
-      this.state.month,
-      PDX_LATITUDE,
-      PDX_LONGITUDE
-    );
-    this.setState({ weather });
+    try {
+      const weather = await getWeather(
+        this.state.month,
+        PDX_LATITUDE,
+        PDX_LONGITUDE
+      );
+      this.setState({ weather, error: "", loading: false });
+    } catch (err) {
+      this.setState({
+        error: "Error fetching weather data. Please try again later.",
+        loading: false
+      });
+      console.error("err in fetch");
+    }
   }
 
   render() {
@@ -51,17 +63,15 @@ class App extends Component {
           currentMonth={this.state.month}
           onMonthChange={this.handleMonthChange}
         />
-        <div>
-          <WeatherReportList weatherDataArray={this.state.weather} />
-        </div>
-        <div>
-          {this.state.weather.length > 0 && (
-            <WeatherReportSummary
-              weatherDataArray={this.state.weather}
-              month={this.state.month}
-            />
-          )}
-        </div>
+        <LoadingIndicator loading={this.state.loading} />
+        <ErrorMessage message={this.state.error} />
+        <WeatherReportList weatherDataArray={this.state.weather} />
+        {this.state.weather.length > 0 && (
+          <WeatherReportSummary
+            weatherDataArray={this.state.weather}
+            month={this.state.month}
+          />
+        )}
         <p className="App-intro">
           <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
         </p>
