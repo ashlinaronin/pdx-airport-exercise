@@ -67,14 +67,17 @@ class App extends Component {
         />
         <LoadingIndicator loading={this.state.loading} />
         <ErrorMessage message={this.state.error} />
-        <WeatherReportList weatherDataArray={this.state.weather} />
-        {this.state.weather.length > 0 && (
-          <WeatherReportSummary
-            weatherDataArray={this.state.weather}
-            month={this.state.month}
-            year={this.state.year}
-          />
+        {!this.state.loading && (
+          <WeatherReportList weatherDataArray={this.state.weather} />
         )}
+        {this.state.weather.length > 0 &&
+          !this.state.loading && (
+            <WeatherReportSummary
+              weatherDataArray={this.state.weather}
+              month={this.state.month}
+              year={this.state.year}
+            />
+          )}
         <p className="App-intro">
           <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
         </p>
