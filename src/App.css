@@ -21,3 +21,12 @@ section,
 footer {
   margin-top: 20px;
 }
+
+footer {
+  margin-bottom: 20px;
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
+}

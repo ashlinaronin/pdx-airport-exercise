@@ -1,3 +1,38 @@
 .weather-report-summary {
   padding: 8px;
 }
+
+.report-key {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.report-key > div {
+  margin: 8px;
+}
+
+.report-key__block {
+  width: 50px;
+  height: 50px;
+  margin: auto auto;
+}
+
+.report-key__block p {
+  display: block;
+  margin: 0;
+  color: white;
+}
+
+.report-key__block.report-key__block--heat {
+  background: red;
+}
+
+.report-key__block.report-key__block--ac {
+  background: blue;
+}
+
+.report-key__block.report-key__block--both {
+  background: purple;
+}

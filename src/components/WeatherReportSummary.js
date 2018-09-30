@@ -21,9 +21,33 @@ const WeatherReportSummary = ({ weatherDataArray, month, year }) => {
 
   return (
     <div className="weather-report-summary">
-      During the month of {month} {year}, the Portland International Airport's
-      AC system was turned on at least once a day for {totalAc} days. Its
-      heating system was turned on at least once a day for {totalHeat} days.
+      <div className="report-key">
+        <div>Key:</div>
+        <div>
+          <div className="report-key__block report-key__block--heat">
+            <p>Heat</p>
+          </div>
+          <div>Heating on at least once</div>
+        </div>
+
+        <div>
+          <div className="report-key__block report-key__block--ac">
+            <p>AC</p>
+          </div>
+          <div>AC on at least once</div>
+        </div>
+        <div>
+          <div className="report-key__block report-key__block--both">
+            <p>Both</p>
+          </div>
+          <div>Both heating and AC on at least once</div>
+        </div>
+      </div>
+      <p>
+        During {month} {year}, the AC system at Portland International Airport
+        was turned on at least once a day for {totalAc} days. The heating system
+        was turned on at least once a day for {totalHeat} days.
+      </p>
     </div>
   );
 };
