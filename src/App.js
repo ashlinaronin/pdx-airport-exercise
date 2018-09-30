@@ -37,19 +37,19 @@ class App extends Component {
   }
 
   async fetchWeatherAndSetState() {
+    this.setState({ loading: true, error: "" });
     try {
       const weather = await getWeather(
         this.state.month,
         PDX_LATITUDE,
         PDX_LONGITUDE
       );
-      this.setState({ weather, error: "", loading: false });
+      this.setState({ weather, loading: false, error: "" });
     } catch (err) {
       this.setState({
         error: "Error fetching weather data. Please try again later.",
         loading: false
       });
-      console.error("err in fetch");
     }
   }
 
