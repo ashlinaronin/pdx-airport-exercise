@@ -1,4 +1,5 @@
 const fetch = require("isomorphic-fetch");
+const moment = require("moment");
 const API_BASE_URL = "//api.darksky.net/forecast";
 const API_SECRET = "dd9b259a5201c1f828bdb05bd0c80321";
 const FETCH_OPTIONS = { headers: { "Accept-Encoding": "gzip" } };
@@ -13,9 +14,10 @@ async function getWeatherForMonth(month, latitude, longitude) {
   // Convert given month into a Unix timestamp in PST
 
   const monthWeather = [];
+  const daysInMonth = getDaysInMonth(month);
 
   // need to figure out how many days in month...
-  for (let i = 1; i <= 31; i++) {
+  for (let i = 1; i <= daysInMonth; i++) {
     const dayWeather = await getWeatherForDay(i, month, latitude, longitude);
     monthWeather.push(dayWeather);
   }
@@ -30,6 +32,10 @@ async function getWeatherForDay(day, month, latitude, longitude) {
   const url = `${API_BASE_URL}/${API_SECRET}/${latitude},${longitude},${timestamp}?exclude=currently,hourly,flags`;
   const response = await fetch(url, FETCH_OPTIONS);
   return response.json();
+}
+
+function getDaysInMonth(month) {
+  return moment(`2018 ${month}`, "YYYY MMMM").daysInMonth();
 }
 
 module.exports = {
