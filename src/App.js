@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {getWeather} from "./services/weather";
 import {PDX_LATITUDE, PDX_LONGITUDE} from "./constants";
+import DateSelector from './components/DateSelector';
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <DateSelector />
         <p>
           {JSON.stringify(this.state.weather)}
         </p>
