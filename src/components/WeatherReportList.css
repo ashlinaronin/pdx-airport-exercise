@@ -1,5 +1,8 @@
 .weather-report-list {
   display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
   flex-wrap: wrap;
   list-style-type: none;
 }

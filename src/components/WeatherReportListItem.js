@@ -15,12 +15,14 @@ const WeatherReportListItem = ({ weatherData, date }) => {
 
   return (
     <li className={classes}>
-      Date=
-      {date}, Maxtemp=
-      {dailyData.temperatureMax}, Mintemp=
-      {dailyData.temperatureMin}, AC=
-      {acTurnedOn ? "yes" : "no"}, Heating=
-      {heatingTurnedOn ? "yes" : "no"}
+      <strong>{date}.</strong>
+      &nbsp;
+      <br />
+      {dailyData.temperatureMax}
+      &deg;
+      <br />
+      {dailyData.temperatureMin}
+      &deg;
     </li>
   );
 };
