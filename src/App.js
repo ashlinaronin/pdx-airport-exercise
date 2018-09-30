@@ -7,6 +7,7 @@ import WeatherReportList from "./components/WeatherReportList";
 import WeatherReportSummary from "./components/WeatherReportSummary";
 import ErrorMessage from "./components/ErrorMessage";
 import LoadingIndicator from "./components/LoadingIndicator";
+import { countDaysAcAndHeatUsed } from "./utils/countDays";
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class App extends Component {
 
     this.state = {
       weather: [],
+      daysAcUsed: 0,
+      daysHeatUsed: 0,
       error: "",
       loading: true,
       month: AVAILABLE_MONTHS[0],
@@ -46,7 +49,14 @@ class App extends Component {
         PDX_LATITUDE,
         PDX_LONGITUDE
       );
-      this.setState({ weather, loading: false, error: "" });
+      const { daysAcUsed, daysHeatUsed } = countDaysAcAndHeatUsed(weather);
+      this.setState({
+        weather,
+        daysAcUsed,
+        daysHeatUsed,
+        loading: false,
+        error: ""
+      });
     } catch (err) {
       this.setState({
         error: "Error fetching weather data. Please try again later.",
@@ -81,7 +91,8 @@ class App extends Component {
             {this.state.weather.length > 0 &&
               !this.state.loading && (
                 <WeatherReportSummary
-                  weatherDataArray={this.state.weather}
+                  daysAcUsed={this.state.daysAcUsed}
+                  daysHeatUsed={this.state.daysHeatUsed}
                   month={this.state.month}
                   year={this.state.year}
                 />
