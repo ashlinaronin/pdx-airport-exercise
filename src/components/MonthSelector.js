@@ -4,20 +4,23 @@ import { AVAILABLE_MONTHS } from "../constants";
 
 const MonthSelector = ({ currentMonth, onMonthChange }) => {
   return (
-    <select
-      name="select-month"
-      id="select-month"
-      value={currentMonth}
-      onChange={onMonthChange}
-    >
-      {AVAILABLE_MONTHS.map(month => {
-        return (
-          <option value={month} key={month}>
-            {month}
-          </option>
-        );
-      })}
-    </select>
+    <div>
+      <label htmlFor="select-month">Select month: </label>
+      <select
+        name="select-month"
+        id="select-month"
+        value={currentMonth}
+        onChange={onMonthChange}
+      >
+        {AVAILABLE_MONTHS.map(month => {
+          return (
+            <option value={month} key={month}>
+              {month}
+            </option>
+          );
+        })}
+      </select>
+    </div>
   );
 };
 

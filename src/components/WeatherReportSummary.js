@@ -20,7 +20,7 @@ const WeatherReportSummary = ({ weatherDataArray, month, year }) => {
   });
 
   return (
-    <div>
+    <div className="weather-report-summary">
       During the month of {month} {year}, the Portland International Airport's
       AC system was turned on at least once a day for {totalAc} days. Its
       heating system was turned on at least once a day for {totalHeat} days.
