@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { weatherType } from "../types";
 import "./WeatherReportListItem.css";
-import { THRESHOLD_AC, THRESHOLD_HEATING } from "../constants";
 
 const BASE_CLASS = "weather-report-list__item";
 
-const WeatherReportListItem = ({ weatherData, date }) => {
-  const dailyData = weatherData.daily.data[0];
-  const acTurnedOn = dailyData.temperatureMax > THRESHOLD_AC;
-  const heatingTurnedOn = dailyData.temperatureMin < THRESHOLD_HEATING;
-
+const WeatherReportListItem = ({
+  acTurnedOn,
+  heatingTurnedOn,
+  maxDailyTemp,
+  minDailyTemp,
+  date
+}) => {
   const classes = getClasses(acTurnedOn, heatingTurnedOn);
 
   return (
@@ -18,10 +18,10 @@ const WeatherReportListItem = ({ weatherData, date }) => {
       <strong>{date}.</strong>
       &nbsp;
       <br />
-      {dailyData.temperatureMax}
+      {maxDailyTemp}
       &deg;
       <br />
-      {dailyData.temperatureMin}
+      {minDailyTemp}
       &deg;
     </li>
   );
@@ -42,7 +42,10 @@ function getClasses(acTurnedOn, heatingTurnedOn) {
 }
 
 WeatherReportListItem.propTypes = {
-  weatherData: weatherType,
+  acTurnedOn: PropTypes.bool.isRequired,
+  heatingTurnedOn: PropTypes.bool.isRequired,
+  maxDailyTemp: PropTypes.number.isRequired,
+  minDailyTemp: PropTypes.number.isRequired,
   date: PropTypes.number.isRequired
 };
 
