@@ -3,6 +3,7 @@ import "./App.css";
 import { getWeather } from "./services/weather";
 import { AVAILABLE_MONTHS, PDX_LATITUDE, PDX_LONGITUDE } from "./constants";
 import MonthSelector from "./components/MonthSelector";
+import WeatherReportList from "./components/WeatherReportList";
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends Component {
     this.handleMonthChange = this.handleMonthChange.bind(this);
 
     this.state = {
-      weather: null,
+      weather: [],
       month: AVAILABLE_MONTHS[0]
     };
   }
@@ -40,7 +41,9 @@ class App extends Component {
           currentMonth={this.state.month}
           onMonthChange={this.handleMonthChange}
         />
-        <p>{JSON.stringify(this.state.weather)}</p>
+        <div>
+          <WeatherReportList weatherDataArray={this.state.weather} />
+        </div>
         <p className="App-intro">
           <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
         </p>
