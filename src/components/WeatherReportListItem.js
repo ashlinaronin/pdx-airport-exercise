@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./WeatherReportListItem.css";
 
-const BASE_CLASS = "weather-report-list__item";
-
 const WeatherReportListItem = ({
   acTurnedOn,
   heatingTurnedOn,
@@ -11,10 +9,10 @@ const WeatherReportListItem = ({
   minDailyTemp,
   date
 }) => {
-  const classes = getClasses(acTurnedOn, heatingTurnedOn);
+  const color = getColor(acTurnedOn, heatingTurnedOn);
 
   return (
-    <li className={classes}>
+    <li className="weather-report-list__item" style={{ background: color }}>
       <strong>{date}.</strong>
       &nbsp;
       <br />
@@ -27,18 +25,18 @@ const WeatherReportListItem = ({
   );
 };
 
-function getClasses(acTurnedOn, heatingTurnedOn) {
-  let classes = BASE_CLASS;
+function getColor(acTurnedOn, heatingTurnedOn) {
+  if (acTurnedOn && heatingTurnedOn) {
+    return "purple";
+  }
 
   if (acTurnedOn) {
-    classes += ` ${BASE_CLASS}--ac`;
+    return "blue";
+  } else if (heatingTurnedOn) {
+    return "red";
+  } else {
+    return "grey";
   }
-
-  if (heatingTurnedOn) {
-    classes += ` ${BASE_CLASS}--heat`;
-  }
-
-  return classes;
 }
 
 WeatherReportListItem.propTypes = {
