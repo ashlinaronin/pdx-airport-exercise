@@ -7,7 +7,7 @@ const WeatherReportList = ({ weatherDataArray }) => {
   return (
     <ul>
       {weatherDataArray.map(weatherData => (
-        <WeatherReportListItem weatherData={weatherData} />
+        <WeatherReportListItem weatherData={weatherData} key={weatherData.daily.data[0].time} />
       ))}
     </ul>
   );
