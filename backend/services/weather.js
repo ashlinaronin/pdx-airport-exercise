@@ -11,12 +11,10 @@ async function getWeather(latitude, longitude) {
 }
 
 async function getWeatherForMonth(month, latitude, longitude) {
-  // Convert given month into a Unix timestamp in PST
-
   const monthWeather = [];
   const daysInMonth = getDaysInMonth(month);
 
-  // need to figure out how many days in month...
+  // TODO: use Promise.all/map for parallel
   for (let i = 1; i <= daysInMonth; i++) {
     const dayWeather = await getWeatherForDay(i, month, latitude, longitude);
     monthWeather.push(dayWeather);
@@ -26,9 +24,8 @@ async function getWeatherForMonth(month, latitude, longitude) {
 }
 
 async function getWeatherForDay(day, month, latitude, longitude) {
-  const date = new Date(`${day} ${month} 2018 00:00:00 GMT-0800`);
-  const timestamp = Math.round(date.getTime() / 1000);
-
+  // Generate a UNIX timestamp for the given month and day so DarkSky can understand it
+  const timestamp = moment(`${month} ${day} 2018`, "MMMM D 2018").unix();
   const url = `${API_BASE_URL}/${API_SECRET}/${latitude},${longitude},${timestamp}?exclude=currently,hourly,flags`;
   const response = await fetch(url, FETCH_OPTIONS);
   return response.json();
