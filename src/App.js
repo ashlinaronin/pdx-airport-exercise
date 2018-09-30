@@ -61,26 +61,36 @@ class App extends Component {
         <header className="app__header">
           <h1 className="app__title">PDX HVAC Report</h1>
         </header>
-        <MonthSelector
-          currentMonth={this.state.month}
-          onMonthChange={this.handleMonthChange}
-        />
-        <LoadingIndicator loading={this.state.loading} />
-        <ErrorMessage message={this.state.error} />
-        {!this.state.loading && (
-          <WeatherReportList weatherDataArray={this.state.weather} />
-        )}
-        {this.state.weather.length > 0 &&
-          !this.state.loading && (
-            <WeatherReportSummary
-              weatherDataArray={this.state.weather}
-              month={this.state.month}
-              year={this.state.year}
+        <main>
+          <section>
+            <MonthSelector
+              currentMonth={this.state.month}
+              onMonthChange={this.handleMonthChange}
             />
-          )}
-        <p className="app__footer">
+          </section>
+          <section>
+            <LoadingIndicator loading={this.state.loading} />
+            <ErrorMessage message={this.state.error} />
+          </section>
+          <section>
+            {!this.state.loading && (
+              <WeatherReportList weatherDataArray={this.state.weather} />
+            )}
+          </section>
+          <section>
+            {this.state.weather.length > 0 &&
+              !this.state.loading && (
+                <WeatherReportSummary
+                  weatherDataArray={this.state.weather}
+                  month={this.state.month}
+                  year={this.state.year}
+                />
+              )}
+          </section>
+        </main>
+        <footer className="app__footer">
           <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-        </p>
+        </footer>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { weatherType } from "../types";
 import { THRESHOLD_HEATING, THRESHOLD_AC } from "../constants";
-import "./WeatherReportList.css";
+import "./WeatherReportSummary.css";
 
 const WeatherReportSummary = ({ weatherDataArray, month, year }) => {
   let totalAc = 0;

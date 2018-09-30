@@ -16,3 +16,8 @@
 .app__footer {
   font-size: small;
 }
+
+section,
+footer {
+  margin-top: 20px;
+}
