@@ -6,8 +6,8 @@ import {weatherType} from "../types";
 const WeatherReportList = ({ weatherDataArray }) => {
   return (
     <ul>
-      {weatherDataArray.map(weatherData => (
-        <WeatherReportListItem weatherData={weatherData} key={weatherData.daily.data[0].time} />
+      {weatherDataArray.map((weatherData, index) => (
+        <WeatherReportListItem weatherData={weatherData} date={index+1} key={weatherData.daily.data[0].time} />
       ))}
     </ul>
   );
