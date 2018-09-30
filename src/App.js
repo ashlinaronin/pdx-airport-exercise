@@ -36,7 +36,9 @@ class App extends Component {
           onMonthChange={this.handleMonthChange}
         />
         <p>{JSON.stringify(this.state.weather)}</p>
-        <p className="App-intro">Powered by Dark Sky</p>
+        <p className="App-intro">
+          <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+        </p>
       </div>
     );
   }
