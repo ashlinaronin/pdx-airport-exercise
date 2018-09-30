@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Cascade Energy</h1>
+          <h1 className="App-title">PDX HVAC Report</h1>
         </header>
         <MonthSelector
           currentMonth={this.state.month}
