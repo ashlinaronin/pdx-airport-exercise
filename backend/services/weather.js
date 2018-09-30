@@ -11,22 +11,22 @@ async function getWeather(latitude, longitude) {
 }
 
 async function getWeatherForMonth(month, year, latitude, longitude) {
-  const monthWeather = [];
   const daysInMonth = getDaysInMonth(month, year);
+  let weatherPromises = [];
 
-  // TODO: use Promise.all/map for parallel
   for (let i = 1; i <= daysInMonth; i++) {
-    const dayWeather = await getWeatherForDay(
+    const dayWeatherPromise = getWeatherForDay(
       i,
       month,
       year,
       latitude,
       longitude
     );
-    monthWeather.push(dayWeather);
+    weatherPromises.push(dayWeatherPromise);
   }
 
-  return monthWeather;
+  // Execute external API calls in parallel
+  return Promise.all(weatherPromises);
 }
 
 async function getWeatherForDay(day, month, year, latitude, longitude) {

@@ -3,7 +3,6 @@ const { getWeather, getWeatherForMonth } = require("../services/weather");
 
 router.get("/today/:latitude/:longitude", async ctx => {
   try {
-    // TODO: verify params present
     ctx.body = await getWeather(ctx.params.latitude, ctx.params.longitude);
   } catch (err) {
     console.error(err);
