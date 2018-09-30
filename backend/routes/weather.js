@@ -19,7 +19,7 @@ router.get("/month/:month/:latitude/:longitude", async ctx => {
       ctx.params.longitude
     );
   } catch (err) {
-    console.erorr(err);
+    console.error(err);
     ctx.throw(500, "Weather: error fetching month's weather from external API");
   }
 });
