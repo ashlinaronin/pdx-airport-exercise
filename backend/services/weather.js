@@ -3,7 +3,7 @@ const moment = require("moment");
 
 // In a production application, we would want to obscure the API secret in an env variable
 const API_BASE_URL = "//api.darksky.net/forecast";
-const API_SECRET = "14d2b07020fa2e2c2bad761d6bf1779c";
+const API_SECRET = "373c7a70334a7e62ff1e1226a20cff4f";
 const FETCH_OPTIONS = { headers: { "Accept-Encoding": "gzip" } };
 
 async function getWeather(latitude, longitude) {
