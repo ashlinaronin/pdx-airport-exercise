@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import "./App.css";
 import { getWeather } from "./services/weather";
+import { countDaysAcAndHeatUsed } from "./utils/countDays";
 import { AVAILABLE_MONTHS, PDX_LATITUDE, PDX_LONGITUDE } from "./constants";
 import MonthSelector from "./components/MonthSelector";
 import WeatherReportList from "./components/WeatherReportList";
 import WeatherReportSummary from "./components/WeatherReportSummary";
 import ErrorMessage from "./components/ErrorMessage";
 import LoadingIndicator from "./components/LoadingIndicator";
-import { countDaysAcAndHeatUsed } from "./utils/countDays";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {

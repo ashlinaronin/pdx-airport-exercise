@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import WeatherReportListItem from "./WeatherReportListItem";
 import { weatherType } from "../types";
 import { THRESHOLD_HEATING, THRESHOLD_AC } from "../constants";
+import WeatherReportListItem from "./WeatherReportListItem";
 import "./WeatherReportList.css";
 
 const WeatherReportList = ({ weatherDataArray }) => {
