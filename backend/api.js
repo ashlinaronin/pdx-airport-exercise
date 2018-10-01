@@ -6,10 +6,9 @@ const LRU = require("lru-cache");
 const logger = require("koa-logger");
 
 const app = new Koa();
+const cache = LRU(1000);
 const router = require("koa-router")();
 const weatherRoutes = require("./routes/weather");
-
-const cache = LRU(1000);
 
 app.use(logger());
 app.use(cors());
