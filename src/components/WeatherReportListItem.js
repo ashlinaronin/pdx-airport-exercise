@@ -32,11 +32,11 @@ function getColor(acTurnedOn, heatingTurnedOn) {
 
   if (acTurnedOn) {
     return "blue";
-  } else if (heatingTurnedOn) {
-    return "red";
-  } else {
-    return "grey";
   }
+  if (heatingTurnedOn) {
+    return "red";
+  }
+  return "grey";
 }
 
 WeatherReportListItem.propTypes = {

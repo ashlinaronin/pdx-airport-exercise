@@ -8,6 +8,14 @@
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "rules": {
     "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "jsx-a11y/label-has-for": [ 2, {
+      "required": {
+        "every": [ "id" ]
+      },
+      "allowChildren": false
+    }],
+    "import/prefer-default-export": 0,
     "no-use-before-define": ["error", {
       "functions": false,
       "classes": true
