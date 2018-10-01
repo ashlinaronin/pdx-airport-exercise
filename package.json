@@ -32,5 +32,6 @@
     "husky": "^1.0.1",
     "prettier": "1.14.3",
     "pretty-quick": "^1.7.0"
-  }
+  },
+  "homepage": "http://ashlin.me/pdx-airport"
 }
