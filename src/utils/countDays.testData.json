@@ -1,0 +1,58 @@
+[
+  {
+    "latitude": 45.5898,
+    "longitude": -122.5951,
+    "timezone": "America/Los_Angeles",
+    "daily": {
+      "data": [
+        {
+          "temperatureMin": 42.39,
+          "temperatureMax": 48.91
+        }
+      ]
+    },
+    "offset": -8
+  },
+  {
+    "latitude": 45.5898,
+    "longitude": -122.5951,
+    "timezone": "America/Los_Angeles",
+    "daily": {
+      "data": [
+        {
+          "temperatureMin": 49.42,
+          "temperatureMax": 58.44
+        }
+      ]
+    },
+    "offset": -8
+  },
+  {
+    "latitude": 45.5898,
+    "longitude": -122.5951,
+    "timezone": "America/Los_Angeles",
+    "daily": {
+      "data": [
+        {
+          "temperatureMin": 48.13,
+          "temperatureMax": 56.3
+        }
+      ]
+    },
+    "offset": -8
+  },
+  {
+    "latitude": 45.5898,
+    "longitude": -122.5951,
+    "timezone": "America/Los_Angeles",
+    "daily": {
+      "data": [
+        {
+          "temperatureMin": 51.13,
+          "temperatureMax": 58.78
+        }
+      ]
+    },
+    "offset": -8
+  }
+]
