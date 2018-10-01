@@ -1,7 +1,26 @@
 {
-  "extends": "react-app",
-  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "rules": {
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "jsx-a11y/label-has-for": [ 2, {
+      "required": {
+        "every": [ "id" ]
+      },
+      "allowChildren": false
+    }],
+    "import/prefer-default-export": 0,
+    "no-use-before-define": ["error", {
+      "functions": false,
+      "classes": true
+    }],
+    "no-param-reassign": ["error", { "props": false }],
     "prettier/prettier": "error"
   }
 }

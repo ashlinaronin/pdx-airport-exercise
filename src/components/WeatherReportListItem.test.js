@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, children } from "enzyme";
+import { mount } from "enzyme";
 import WeatherReportListItem from "./WeatherReportListItem";
 
 describe("WeatherReportListItem", () => {
@@ -7,7 +7,7 @@ describe("WeatherReportListItem", () => {
     it("should be blue", () => {
       const wrapper = mount(
         <WeatherReportListItem
-          acTurnedOn={true}
+          acTurnedOn
           heatingTurnedOn={false}
           maxDailyTemp={70}
           minDailyTemp={40}
@@ -29,7 +29,7 @@ describe("WeatherReportListItem", () => {
       const wrapper = mount(
         <WeatherReportListItem
           acTurnedOn={false}
-          heatingTurnedOn={true}
+          heatingTurnedOn
           maxDailyTemp={70}
           minDailyTemp={40}
           date={1}
@@ -48,8 +48,8 @@ describe("WeatherReportListItem", () => {
     it("should be purple", () => {
       const wrapper = mount(
         <WeatherReportListItem
-          acTurnedOn={true}
-          heatingTurnedOn={true}
+          acTurnedOn
+          heatingTurnedOn
           maxDailyTemp={70}
           minDailyTemp={40}
           date={1}

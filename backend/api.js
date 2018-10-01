@@ -4,10 +4,11 @@ const cash = require("koa-cash");
 const convert = require("koa-convert");
 const LRU = require("lru-cache");
 const logger = require("koa-logger");
+
 const app = new Koa();
-const weatherRoutes = require("./routes/weather");
-const router = require("koa-router")();
 const cache = LRU(1000);
+const router = require("koa-router")();
+const weatherRoutes = require("./routes/weather");
 
 app.use(logger());
 app.use(cors());

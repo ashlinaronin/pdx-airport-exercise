@@ -26,26 +26,31 @@ class App extends Component {
     };
   }
 
-  async handleMonthChange(event) {
-    this.setState({ month: event.target.value });
-  }
-
   async componentDidMount() {
     await this.fetchWeatherAndSetState();
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    if (this.state.month !== prevState.month) {
+    const { month } = this.state;
+
+    if (month !== prevState.month) {
       await this.fetchWeatherAndSetState();
     }
   }
 
+  async handleMonthChange(event) {
+    this.setState({ month: event.target.value });
+  }
+
   async fetchWeatherAndSetState() {
     this.setState({ loading: true, error: "" });
+
+    const { month, year } = this.state;
+
     try {
       const weather = await getWeather(
-        this.state.month,
-        this.state.year,
+        month,
+        year,
         PDX_LATITUDE,
         PDX_LONGITUDE
       );
@@ -66,6 +71,16 @@ class App extends Component {
   }
 
   render() {
+    const {
+      month,
+      year,
+      loading,
+      error,
+      weather,
+      daysAcUsed,
+      daysHeatUsed
+    } = this.state;
+
     return (
       <div className="app">
         <header className="app__header">
@@ -74,27 +89,25 @@ class App extends Component {
         <main>
           <section>
             <MonthSelector
-              currentMonth={this.state.month}
+              currentMonth={month}
               onMonthChange={this.handleMonthChange}
             />
           </section>
           <section>
-            <LoadingIndicator loading={this.state.loading} />
-            <ErrorMessage message={this.state.error} />
+            <LoadingIndicator loading={loading} />
+            <ErrorMessage message={error} />
           </section>
           <section>
-            {!this.state.loading && (
-              <WeatherReportList weatherDataArray={this.state.weather} />
-            )}
+            {!loading && <WeatherReportList weatherDataArray={weather} />}
           </section>
           <section>
-            {this.state.weather.length > 0 &&
-              !this.state.loading && (
+            {weather.length > 0 &&
+              !loading && (
                 <WeatherReportSummary
-                  daysAcUsed={this.state.daysAcUsed}
-                  daysHeatUsed={this.state.daysHeatUsed}
-                  month={this.state.month}
-                  year={this.state.year}
+                  daysAcUsed={daysAcUsed}
+                  daysHeatUsed={daysHeatUsed}
+                  month={month}
+                  year={year}
                 />
               )}
           </section>

@@ -1,5 +1,7 @@
 const fetch = require("isomorphic-fetch");
 const moment = require("moment");
+
+// In a production application, we would want to obscure the API secret in an env variable
 const API_BASE_URL = "//api.darksky.net/forecast";
 const API_SECRET = "14d2b07020fa2e2c2bad761d6bf1779c";
 const FETCH_OPTIONS = { headers: { "Accept-Encoding": "gzip" } };
@@ -12,9 +14,9 @@ async function getWeather(latitude, longitude) {
 
 async function getWeatherForMonth(month, year, latitude, longitude) {
   const daysInMonth = getDaysInMonth(month, year);
-  let weatherPromises = [];
+  const weatherPromises = [];
 
-  for (let i = 1; i <= daysInMonth; i++) {
+  for (let i = 1; i <= daysInMonth; i += 1) {
     const dayWeatherPromise = getWeatherForDay(
       i,
       month,
